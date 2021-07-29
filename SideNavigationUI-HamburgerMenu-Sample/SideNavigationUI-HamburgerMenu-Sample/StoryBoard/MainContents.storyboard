@@ -16,22 +16,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQK-sD-4GJ">
-                                <rect key="frame" x="186" y="325" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="見出し：メインコンテンツ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVJ-XZ-RB4">
+                                <rect key="frame" x="20" y="104" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vP-gg-ILw">
+                                <rect key="frame" x="20" y="137" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="88" id="7d5-RT-HPH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="LgX-WK-GUL"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">解説：
+こちらはメイン（一番最初にも表示される）画面になります。
+一番見せたいものをここに表示します。</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HiraginoSans-W3"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="7" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5vP-gg-ILw" firstAttribute="top" secondItem="aVJ-XZ-RB4" secondAttribute="bottom" constant="12" id="3zw-Bk-ywj"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aVJ-XZ-RB4" secondAttribute="trailing" constant="20" id="UEg-EE-7Cm"/>
+                            <constraint firstItem="aVJ-XZ-RB4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="c4j-v8-AKt"/>
+                            <constraint firstItem="aVJ-XZ-RB4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="d7D-Go-6oq"/>
+                            <constraint firstItem="5vP-gg-ILw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="uHB-1m-hfJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5vP-gg-ILw" secondAttribute="trailing" constant="20" id="yBe-pJ-osr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="メインコンテンツ画面" id="Xjc-cT-ytE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="116"/>
+            <point key="canvasLocation" x="831.88405797101461" y="115.84821428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fsO-ul-KlE">

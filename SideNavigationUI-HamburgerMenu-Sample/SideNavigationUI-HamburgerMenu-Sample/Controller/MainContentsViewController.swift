@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainContentsViewControllerDelegate: AnyObject {
-    func didTapMenuButton()
+    func didTapMainContentsMenuButton()
 }
 
 class MainContentsViewController: UIViewController {
@@ -43,7 +43,6 @@ class MainContentsViewController: UIViewController {
     }
 
     @objc private func didTapMenuButton(sender: UIButton) {
-        delegate?.didTapMenuButton()
-        print("メニューボタンが押されました")
+        delegate?.didTapMainContentsMenuButton()
     }
 }

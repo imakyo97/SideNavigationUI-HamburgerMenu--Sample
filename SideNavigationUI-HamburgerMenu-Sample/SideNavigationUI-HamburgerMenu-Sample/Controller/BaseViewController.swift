@@ -12,14 +12,20 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var contentsView: UIView!
 
     private var mainContentsNavigationController: UINavigationController!
+    private var informationContentsNavigationController: UINavigationController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mainContentsNavigationController = instantiateMainContentsNavigationController()
+        settingMainContentsViewControllerDelegate()
+        showMainContents() // MainContentsVCを初期画面に設定
+    }
+
+    // MainContentsViewControllerDelegateをselfに設定
+    private func settingMainContentsViewControllerDelegate() {
         let mainContentsVC = mainContentsNavigationController
             .topViewController as! MainContentsViewController
         mainContentsVC.delegate = self
-        showMainContents() // MainContentsVCを初期画面に設定
     }
 
     // MainContentsViewControllerのインスタンを作成
@@ -41,11 +47,45 @@ class BaseViewController: UIViewController {
         // mainContentsVCに対して処理の終了を通知する
         mainContentsNavigationController.didMove(toParent: self)
     }
+
+    // MainContentsViewControllerDelegateをselfに設定
+    private func settingInformationContentsViewControllerDelegate() {
+        let informationContentsVC = informationContentsNavigationController
+            .topViewController as! InformationContentsViewController
+        informationContentsVC.delegate = self
+    }
+
+    // MainContentsViewControllerのインスタンを作成
+    private func instantiateInformationContentsNavigationController()
+    -> UINavigationController {
+        let storyBourd = UIStoryboard(name: "InformationContents", bundle: nil)
+        let informationContentsNavigationController = storyBourd
+            .instantiateInitialViewController()
+            as! UINavigationController
+        return informationContentsNavigationController
+    }
+
+    // メインコンテンツ画面を表示する
+    private func showInformationContents() {
+        // mainContentsVCのviewをBaseVCのcontentsViewに追加
+        contentsView.addSubview(informationContentsNavigationController.view)
+        // mainContentsVCをBaseVCの子として追加
+        addChild(informationContentsNavigationController)
+        // mainContentsVCに対して処理の終了を通知する
+        informationContentsNavigationController.didMove(toParent: self)
+    }
 }
 
 extension BaseViewController: MainContentsViewControllerDelegate {
-    func didTapMenuButton() {
-        print("delegateが作動しました")
+    func didTapMainContentsMenuButton() {
         contentsView.frame.origin.x = 260
-        }
+    }
 }
+
+extension BaseViewController: InformationContentsViewControllerDelegate {
+    func didTapInformationContentsMenuButton() {
+        contentsView.frame.origin.x = 260
+    }
+}
+
+

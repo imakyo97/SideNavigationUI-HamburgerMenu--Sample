@@ -7,23 +7,42 @@
 
 import UIKit
 
+protocol InformationContentsViewControllerDelegate: AnyObject {
+    func didTapInformationContentsMenuButton()
+}
+
 class InformationContentsViewController: UIViewController {
+
+    weak var delegate: InformationContentsViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        settingMenuBarButtonItem()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    private func settingMenuBarButtonItem() {
+        //メニューボタンを作成
+        let menuButton = UIBarButtonItem(
+            title: "≡",
+            style: .plain,
+            target: self,
+            action: #selector(didTapMenuButton(sender:))
+        )
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // メニューボタンのデザイン調整
+        let menuAttribute: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "HiraKakuProN-W3", size: 30)!,
+            .foregroundColor: UIColor.gray
+        ]
+
+        // メニューボタンのデザインをセット
+        menuButton.setTitleTextAttributes(menuAttribute, for: .normal)
+
+        // NavigationViewControllerにボタンをセット
+        navigationItem.leftBarButtonItem = menuButton
     }
-    */
 
+    @objc private func didTapMenuButton(sender: UIButton) {
+        delegate?.didTapInformationContentsMenuButton()
+    }
 }
