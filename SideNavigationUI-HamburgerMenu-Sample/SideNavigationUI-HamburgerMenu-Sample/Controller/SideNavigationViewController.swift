@@ -7,23 +7,53 @@
 
 import UIKit
 
+protocol SideNavigationButtonDelegate: AnyObject {
+    func changeMainContentsContainer(_ buttonType: Int)
+}
+
 class SideNavigationViewController: UIViewController {
+
+    weak var delegate: SideNavigationButtonDelegate?
+
+    @IBOutlet private weak var mainContentsButton: UIButton!
+    @IBOutlet private weak var informationContentsButton: UIButton!
+    @IBOutlet private weak var appleWebPageButton: UIButton!
+    @IBOutlet private weak var amazonWebPageButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        settingSideNavigationButton()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    private func settingSideNavigationButton() {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        mainContentsButton.addTarget(
+            self,
+            action: #selector(didTapSideNavigationButton(sender:)),
+            for: .touchUpInside
+        )
+
+        informationContentsButton.addTarget(
+            self,
+            action: #selector(didTapSideNavigationButton(sender:)),
+            for: .touchUpInside
+        )
+
+        appleWebPageButton.addTarget(
+            self,
+            action: #selector(didTapSideNavigationButton(sender:)),
+            for: .touchUpInside
+        )
+
+        amazonWebPageButton.addTarget(
+            self,
+            action: #selector(didTapSideNavigationButton(sender:)),
+            for: .touchUpInside
+        )
     }
-    */
 
+    @objc private func didTapSideNavigationButton(sender: UIButton) {
+        let selectedButtonType = sender.tag
+        delegate?.changeMainContentsContainer(selectedButtonType)
+    }
 }

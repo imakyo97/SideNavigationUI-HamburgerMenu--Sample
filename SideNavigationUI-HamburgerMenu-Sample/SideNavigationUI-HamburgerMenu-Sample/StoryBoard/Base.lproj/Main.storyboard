@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="102.89855072463769" y="115.84821428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Side Navigation View Controller-->
         <scene sceneID="nMN-b1-P32">
             <objects>
-                <viewController id="Ywb-Lh-Be6" sceneMemberID="viewController">
+                <viewController id="Ywb-Lh-Be6" customClass="SideNavigationViewController" customModule="SideNavigationUI_HamburgerMenu_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jhx-8H-t3q">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="re2-9Q-rYg">
+                                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="re2-9Q-rYg">
                                                                                 <rect key="frame" x="8" y="4" width="244" height="42"/>
                                                                             </button>
                                                                         </subviews>
@@ -195,7 +195,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6x-yi-4Ux">
+                                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6x-yi-4Ux">
                                                                                 <rect key="frame" x="8" y="4" width="244" height="41.5"/>
                                                                             </button>
                                                                         </subviews>
@@ -223,13 +223,13 @@
                                                                                     <constraint firstAttribute="height" constant="0.5" id="9XI-f4-RZl"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="関連Qiita記事はこちら" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TR-9f-K7q">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple公式サイトはこちら" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TR-9f-K7q">
                                                                                 <rect key="frame" x="15" y="18.5" width="230" height="13"/>
                                                                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3j-f8-GG9">
+                                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3j-f8-GG9">
                                                                                 <rect key="frame" x="8" y="4" width="244" height="41.5"/>
                                                                             </button>
                                                                         </subviews>
@@ -257,13 +257,13 @@
                                                                                     <constraint firstAttribute="height" constant="0.5" id="KZg-96-kcV"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="関連スライドはこちら" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XP-lv-GEa">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amazon公式サイトはこちら" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XP-lv-GEa">
                                                                                 <rect key="frame" x="15" y="18.5" width="230" height="13"/>
                                                                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="13"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaP-7w-KqF">
+                                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaP-7w-KqF">
                                                                                 <rect key="frame" x="8" y="4" width="244" height="41.5"/>
                                                                             </button>
                                                                         </subviews>
@@ -344,6 +344,12 @@
                             <constraint firstItem="91e-MK-XUY" firstAttribute="leading" secondItem="sh8-dK-RNc" secondAttribute="leading" id="pef-Nf-eza"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="amazonWebPageButton" destination="HaP-7w-KqF" id="45M-az-Ru3"/>
+                        <outlet property="appleWebPageButton" destination="B3j-f8-GG9" id="yaq-j9-h75"/>
+                        <outlet property="informationContentsButton" destination="X6x-yi-4Ux" id="ftb-h1-ngB"/>
+                        <outlet property="mainContentsButton" destination="re2-9Q-rYg" id="NNS-KW-pZk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMO-53-hq8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

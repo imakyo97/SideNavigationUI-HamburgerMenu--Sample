@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		475884AA26B5747B00E49459 /* SideNavigationButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475884A926B5747B00E49459 /* SideNavigationButtonType.swift */; };
 		478A5B1626B18B4D00AD7B89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478A5B1526B18B4D00AD7B89 /* AppDelegate.swift */; };
 		478A5B1826B18B4D00AD7B89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478A5B1726B18B4D00AD7B89 /* SceneDelegate.swift */; };
 		478A5B1D26B18B4D00AD7B89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478A5B1B26B18B4D00AD7B89 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		475884A926B5747B00E49459 /* SideNavigationButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavigationButtonType.swift; sourceTree = "<group>"; };
 		478A5B1226B18B4D00AD7B89 /* SideNavigationUI-HamburgerMenu-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideNavigationUI-HamburgerMenu-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		478A5B1526B18B4D00AD7B89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		478A5B1726B18B4D00AD7B89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		475884A826B5745300E49459 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				475884A926B5747B00E49459 /* SideNavigationButtonType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		478A5B0926B18B4D00AD7B89 = {
 			isa = PBXGroup;
 			children = (
@@ -66,30 +76,15 @@
 		478A5B1426B18B4D00AD7B89 /* SideNavigationUI-HamburgerMenu-Sample */ = {
 			isa = PBXGroup;
 			children = (
+				475884A826B5745300E49459 /* Enum */,
 				478A5B3426B18E9A00AD7B89 /* StoryBoard */,
 				478A5B2B26B18C7300AD7B89 /* Controller */,
-				478A5B2A26B18C6C00AD7B89 /* View */,
-				478A5B2926B18C6200AD7B89 /* Model */,
 				478A5B1526B18B4D00AD7B89 /* AppDelegate.swift */,
 				478A5B1726B18B4D00AD7B89 /* SceneDelegate.swift */,
 				478A5B1E26B18B4E00AD7B89 /* Assets.xcassets */,
 				478A5B2326B18B4E00AD7B89 /* Info.plist */,
 			);
 			path = "SideNavigationUI-HamburgerMenu-Sample";
-			sourceTree = "<group>";
-		};
-		478A5B2926B18C6200AD7B89 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		478A5B2A26B18C6C00AD7B89 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		478A5B2B26B18C7300AD7B89 /* Controller */ = {
@@ -187,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				478A5B1626B18B4D00AD7B89 /* AppDelegate.swift in Sources */,
+				475884AA26B5747B00E49459 /* SideNavigationButtonType.swift in Sources */,
 				478A5B2F26B18D2000AD7B89 /* SideNavigationViewController.swift in Sources */,
 				478A5B1826B18B4D00AD7B89 /* SceneDelegate.swift in Sources */,
 				478A5B3126B18D3C00AD7B89 /* MainContentsViewController.swift in Sources */,
