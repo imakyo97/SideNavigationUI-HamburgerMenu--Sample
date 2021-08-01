@@ -53,6 +53,7 @@ class SideNavigationViewController: UIViewController {
     }
 
     @objc private func didTapSideNavigationButton(sender: UIButton) {
+        print("ボタンが押された")
         let selectedButtonType = sender.tag
         delegate?.changeMainContentsContainer(selectedButtonType)
     }

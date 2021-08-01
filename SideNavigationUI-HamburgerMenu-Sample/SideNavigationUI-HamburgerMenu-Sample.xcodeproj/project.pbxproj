@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		475884AA26B5747B00E49459 /* SideNavigationButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475884A926B5747B00E49459 /* SideNavigationButtonType.swift */; };
+		475884AC26B5813100E49459 /* SideNavigationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475884AB26B5813100E49459 /* SideNavigationStatus.swift */; };
 		478A5B1626B18B4D00AD7B89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478A5B1526B18B4D00AD7B89 /* AppDelegate.swift */; };
 		478A5B1826B18B4D00AD7B89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478A5B1726B18B4D00AD7B89 /* SceneDelegate.swift */; };
 		478A5B1D26B18B4D00AD7B89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 478A5B1B26B18B4D00AD7B89 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		475884A926B5747B00E49459 /* SideNavigationButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavigationButtonType.swift; sourceTree = "<group>"; };
+		475884AB26B5813100E49459 /* SideNavigationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavigationStatus.swift; sourceTree = "<group>"; };
 		478A5B1226B18B4D00AD7B89 /* SideNavigationUI-HamburgerMenu-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SideNavigationUI-HamburgerMenu-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		478A5B1526B18B4D00AD7B89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		478A5B1726B18B4D00AD7B89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				475884A926B5747B00E49459 /* SideNavigationButtonType.swift */,
+				475884AB26B5813100E49459 /* SideNavigationStatus.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				478A5B1826B18B4D00AD7B89 /* SceneDelegate.swift in Sources */,
 				478A5B3126B18D3C00AD7B89 /* MainContentsViewController.swift in Sources */,
 				478A5B2D26B18CF300AD7B89 /* BaseViewController.swift in Sources */,
+				475884AC26B5813100E49459 /* SideNavigationStatus.swift in Sources */,
 				478A5B3326B18D6800AD7B89 /* InformationContentsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
