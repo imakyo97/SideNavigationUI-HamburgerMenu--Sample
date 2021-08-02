@@ -31,6 +31,7 @@ class BaseViewController: UIViewController {
         showMainContents() // MainContentsVCを初期画面に設定
         informationContentsNavigationController = instantiateInformationContentsNavigationController()
         settingInformationContentsViewControllerDelegate()
+        setEdgePanGestureRecognizer()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,6 +41,16 @@ class BaseViewController: UIViewController {
                 segue.destination as! SideNavigationViewController
             sideNavigationViewController.delegate = self
         }
+    }
+
+    private func setEdgePanGestureRecognizer() {
+        let panGesture =
+            UIScreenEdgePanGestureRecognizer(
+                target: self,
+                action: #selector(edgeTapGesture(sender:))
+            )
+        panGesture.edges = .left
+        contentsView.addGestureRecognizer(panGesture)
     }
 
     // MainContentsViewControllerDelegateをselfに設定
@@ -198,6 +209,45 @@ class BaseViewController: UIViewController {
         }, completion: { _ in
             withCompletion?()
         })
+    }
+
+    @objc private func edgeTapGesture(sender: UIScreenEdgePanGestureRecognizer) {
+
+        // サイドナビゲーションビューとコンテンツビューのタッチイベントを無効にする
+        SideNavigationView.isUserInteractionEnabled = false
+        contentsView.isUserInteractionEnabled = false
+
+        // 移動量を取得する
+        let move: CGPoint = sender.translation(in: contentsView)
+
+        // コンテンツビューとボタンを移動させる
+        wrapperButton.frame.origin.x += move.x
+        contentsView.frame.origin.x += move.x
+
+        // サイドナビゲーションとボタンのアルファ値を変更する
+        SideNavigationView.alpha = contentsView.frame.origin.x / 260
+        wrapperButton.alpha = contentsView.frame.origin.x / 260 * 0.36
+
+        // 移動しすぎないようにナビゲーションビューの幅で止める
+        if contentsView.frame.origin.x > 260 {
+            contentsView.frame.origin.x = 260
+            wrapperButton.frame.origin.x = 260
+        } else if contentsView.frame.origin.x < 0 {
+            contentsView.frame.origin.x = 0
+            wrapperButton.frame.origin.x = 0
+        }
+
+        // ドラッグ終了時に移動量の160を基準に処理を分ける
+        if sender.state == UIGestureRecognizer.State.ended {
+            if contentsView.frame.origin.x > 160 {
+                openSideNavigationView(withCompletion: nil)
+            } else {
+                closeSideNavigationView(withCompletion: nil)
+            }
+        }
+
+        // 移動量をリセットする
+        sender.setTranslation(CGPoint.zero, in: self.view)
     }
 }
 
