@@ -21,6 +21,9 @@ class BaseViewController: UIViewController {
     private var sideNavigationStatus: SideNavigationStatus =
         .closed
 
+    // タッチイベント開始時の座標
+    private var touchBeganPositionX: CGFloat!
+
     private var mainContentsNavigationController: UINavigationController!
     private var informationContentsNavigationController: UINavigationController!
 
@@ -69,6 +72,7 @@ class BaseViewController: UIViewController {
             as! UINavigationController
         return mainContentsNavigationController
     }
+
 
     // メインコンテンツ画面を表示する
     private func showMainContents() {
@@ -143,6 +147,79 @@ class BaseViewController: UIViewController {
         )
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
+    }
+    // コンテンツの開閉状態を管理する
+    private func changeContentsSettingWithAnimation(_ status: SideNavigationStatus) {
+        // コンテンツを開いて、状態を管理する
+        if status == .opened {
+            sideNavigationStatus = .opened
+            openSideNavigationView()
+        } else {
+            sideNavigationStatus = .closed
+            closeSideNavigationView()
+        }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+
+        let touchEvent = touches.first!
+
+        let beginPosition = touchEvent.previousLocation(in: view)
+        touchBeganPositionX = beginPosition.x
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+
+        if touchBeganPositionX >= 260 && sideNavigationStatus == .opened {
+
+            SideNavigationView.isUserInteractionEnabled = false
+            contentsView.isUserInteractionEnabled = false
+
+            let touchEvent = touches.first!
+
+            // ドラッグ前の座標
+            let preDx = touchEvent.previousLocation(in: self.view).x
+
+            // ドラッグ後の座標
+            let newDx = touchEvent.location(in: self.view).x
+
+            // ドラッグしたx座標の移動距離
+            let dx = newDx - preDx
+
+            // ドラッグした移動分の値を反映させる
+            var viewFrame: CGRect = wrapperButton.frame
+            viewFrame.origin.x += dx
+            contentsView.frame = viewFrame
+            wrapperButton.frame = viewFrame
+
+            // メインコンテンツのx座標が0〜260の間に収まるように補正
+            if contentsView.frame.origin.x > 260 {
+
+                contentsView.frame.origin.x = 260
+                wrapperButton.frame.origin.x         = 260
+
+            } else if contentsView.frame.origin.x < 0 {
+
+                contentsView.frame.origin.x = 0
+                wrapperButton.frame.origin.x         = 0
+            }
+
+            // サイドナビゲーションとボタンのアルファ値を変更する
+            SideNavigationView.alpha = contentsView.frame.origin.x / 260
+            wrapperButton.alpha           = contentsView.frame.origin.x / 260 * 0.36
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+
+        if touchBeganPositionX >= 260 && (contentsView.frame.origin.x == 260 || contentsView.frame.origin.x < 160) {
+            changeContentsSettingWithAnimation(.closed)
+        } else if touchBeganPositionX >= 260 && contentsView.frame.origin.x >= 160 {
+            changeContentsSettingWithAnimation(.opened)
+        }
     }
 
     // サイドナビゲーションを開くメソッド
@@ -240,9 +317,9 @@ class BaseViewController: UIViewController {
         // ドラッグ終了時に移動量の160を基準に処理を分ける
         if sender.state == UIGestureRecognizer.State.ended {
             if contentsView.frame.origin.x > 160 {
-                openSideNavigationView(withCompletion: nil)
+                changeContentsSettingWithAnimation(.opened)
             } else {
-                closeSideNavigationView(withCompletion: nil)
+                changeContentsSettingWithAnimation(.closed)
             }
         }
 
@@ -254,14 +331,14 @@ class BaseViewController: UIViewController {
 // MARK: - MainContentsViewControllerDelegate
 extension BaseViewController: MainContentsViewControllerDelegate {
     func didTapMainContentsMenuButton() {
-        openSideNavigationView()
+        changeContentsSettingWithAnimation(.opened)
     }
 }
 
 // MARK: - InformationContentsViewControllerDelegate
 extension BaseViewController: InformationContentsViewControllerDelegate {
     func didTapInformationContentsMenuButton() {
-        openSideNavigationView()
+        changeContentsSettingWithAnimation(.opened)
     }
 }
 
@@ -281,6 +358,7 @@ extension BaseViewController: SideNavigationButtonDelegate {
                     self.showMainContents()
                 }
             })
+            sideNavigationStatus = .closed
 
         // インフォメーションコンテンツの場合
         case SideNavigationButtonType.informationContents.rawValue:
@@ -290,18 +368,21 @@ extension BaseViewController: SideNavigationButtonDelegate {
                     self.showInformationContents()
                 }
             })
+            sideNavigationStatus = .closed
 
         // appleWebPageの場合
         case SideNavigationButtonType.appleWebPage.rawValue:
             closeSideNavigationView(withCompletion: {
                 self.showAppleWebPage()
             })
+            sideNavigationStatus = .closed
 
         // amazonWebPageの場合
         case SideNavigationButtonType.amazonWebPage.rawValue:
             closeSideNavigationView(withCompletion: {
                 self.showAmazonWebPage()
             })
+            sideNavigationStatus = .closed
         default:
             break
         }
